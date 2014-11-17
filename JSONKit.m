@@ -2947,34 +2947,62 @@ errorExit:
 
 - (NSData *)JSONData
 {
-  return([JKSerializer serializeObject:self options:JKSerializeOptionNone encodeOption:(JKEncodeOptionAsData | JKEncodeOptionCollectionObj) block:NULL delegate:NULL selector:NULL error:NULL]);
+    return([JKSerializer serializeObject:self options:JKSerializeOptionNone encodeOption:(JKEncodeOptionAsData | JKEncodeOptionCollectionObj) block:NULL delegate:NULL selector:NULL error:NULL]);
 }
 
 - (NSData *)JSONDataWithOptions:(JKSerializeOptionFlags)serializeOptions error:(NSError **)error
 {
-  return([JKSerializer serializeObject:self options:serializeOptions encodeOption:(JKEncodeOptionAsData | JKEncodeOptionCollectionObj) block:NULL delegate:NULL selector:NULL error:error]);
+    return([JKSerializer serializeObject:self options:serializeOptions encodeOption:(JKEncodeOptionAsData | JKEncodeOptionCollectionObj) block:NULL delegate:NULL selector:NULL error:error]);
 }
 
 - (NSData *)JSONDataWithOptions:(JKSerializeOptionFlags)serializeOptions serializeUnsupportedClassesUsingDelegate:(id)delegate selector:(SEL)selector error:(NSError **)error
 {
-  return([JKSerializer serializeObject:self options:serializeOptions encodeOption:(JKEncodeOptionAsData | JKEncodeOptionCollectionObj) block:NULL delegate:delegate selector:selector error:error]);
+    return([JKSerializer serializeObject:self options:serializeOptions encodeOption:(JKEncodeOptionAsData | JKEncodeOptionCollectionObj) block:NULL delegate:delegate selector:selector error:error]);
 }
 
 // NSString returning methods...
 
 - (NSString *)JSONString
 {
-  return([JKSerializer serializeObject:self options:JKSerializeOptionNone encodeOption:(JKEncodeOptionAsString | JKEncodeOptionCollectionObj) block:NULL delegate:NULL selector:NULL error:NULL]);
+    return([JKSerializer serializeObject:self options:JKSerializeOptionNone encodeOption:(JKEncodeOptionAsString | JKEncodeOptionCollectionObj) block:NULL delegate:NULL selector:NULL error:NULL]);
 }
 
 - (NSString *)JSONStringWithOptions:(JKSerializeOptionFlags)serializeOptions error:(NSError **)error
 {
-  return([JKSerializer serializeObject:self options:serializeOptions encodeOption:(JKEncodeOptionAsString | JKEncodeOptionCollectionObj) block:NULL delegate:NULL selector:NULL error:error]);
+    return([JKSerializer serializeObject:self options:serializeOptions encodeOption:(JKEncodeOptionAsString | JKEncodeOptionCollectionObj) block:NULL delegate:NULL selector:NULL error:error]);
 }
 
 - (NSString *)JSONStringWithOptions:(JKSerializeOptionFlags)serializeOptions serializeUnsupportedClassesUsingDelegate:(id)delegate selector:(SEL)selector error:(NSError **)error
 {
-  return([JKSerializer serializeObject:self options:serializeOptions encodeOption:(JKEncodeOptionAsString | JKEncodeOptionCollectionObj) block:NULL delegate:delegate selector:selector error:error]);
+    return([JKSerializer serializeObject:self options:serializeOptions encodeOption:(JKEncodeOptionAsString | JKEncodeOptionCollectionObj) block:NULL delegate:delegate selector:selector error:error]);
+}
+
+@end
+
+@implementation NSNumber (JSONKitSerializing)
+
+// NSData returning methods...
+
+- (NSData *)JSONData
+{
+    return([JKSerializer serializeObject:self options:JKSerializeOptionNone encodeOption:JKEncodeOptionAsData block:NULL delegate:NULL selector:NULL error:NULL]);
+}
+
+- (NSData *)JSONDataWithOptions:(JKSerializeOptionFlags)serializeOptions error:(NSError **)error
+{
+    return([JKSerializer serializeObject:self options:serializeOptions encodeOption:JKEncodeOptionAsData block:NULL delegate:NULL selector:NULL error:error]);
+}
+
+// NSString returning methods...
+
+- (NSString *)JSONString
+{
+    return([JKSerializer serializeObject:self options:JKSerializeOptionNone encodeOption:JKEncodeOptionAsString block:NULL delegate:NULL selector:NULL error:NULL]);
+}
+
+- (NSString *)JSONStringWithOptions:(JKSerializeOptionFlags)serializeOptions error:(NSError **)error
+{
+    return([JKSerializer serializeObject:self options:serializeOptions encodeOption:JKEncodeOptionAsString block:NULL delegate:NULL selector:NULL error:error]);
 }
 
 @end
